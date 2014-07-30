@@ -31,6 +31,32 @@ module DOTIW
           return build_time_hash
         end
         TIME_FRACTIONS.index(accumulate_on).downto(0) { |i| self.send("build_#{TIME_FRACTIONS[i]}") }
+      elsif abstract_distance = options.delete(:abstract_distance)
+        years = (distance / 1.year).floor
+        distance = distance - years.year
+
+        months = (distance / 1.month).floor
+        distance = distance - months.month
+
+        days = (distance / 1.day).floor
+        distance = distance - days.day
+
+        hours = (distance / 1.hour).floor
+        distance = distance - hours.hour
+
+        minutes = (distance / 1.minute).floor
+        distance = distance - minutes.minute
+
+        seconds = (distance / 1.second).floor
+        distance = distance - seconds.second
+
+
+        output[:years]   = years
+        output[:months]  = months
+        output[:days]    = days
+        output[:hours]   = hours
+        output[:minutes] = minutes
+        output[:seconds] = seconds
       else
         while distance > 0
           if distance < 1.minute
