@@ -32,23 +32,23 @@ module DOTIW
         end
         TIME_FRACTIONS.index(accumulate_on).downto(0) { |i| self.send("build_#{TIME_FRACTIONS[i]}") }
       elsif abstract_distance = options.delete(:abstract_distance)
-        years = (distance / 1.year).floor
-        distance = distance - years.year
+        years = (self.self.distance / 1.year).floor
+        self.distance = self.distance - years.year
 
-        months = (distance / 1.month).floor
-        distance = distance - months.month
+        months = (self.distance / 1.month).floor
+        self.distance = self.distance - months.month
 
-        days = (distance / 1.day).floor
-        distance = distance - days.day
+        days = (self.distance / 1.day).floor
+        self.distance = self.distance - days.day
 
-        hours = (distance / 1.hour).floor
-        distance = distance - hours.hour
+        hours = (self.distance / 1.hour).floor
+        self.distance = self.distance - hours.hour
 
-        minutes = (distance / 1.minute).floor
-        distance = distance - minutes.minute
+        minutes = (self.distance / 1.minute).floor
+        self.distance = self.distance - minutes.minute
 
-        seconds = (distance / 1.second).floor
-        distance = distance - seconds.second
+        seconds = (self.distance / 1.second).floor
+        self.distance = self.distance - seconds.second
 
 
         output[:years]   = years
