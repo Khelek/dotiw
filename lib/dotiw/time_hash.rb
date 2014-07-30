@@ -31,8 +31,8 @@ module DOTIW
           return build_time_hash
         end
         TIME_FRACTIONS.index(accumulate_on).downto(0) { |i| self.send("build_#{TIME_FRACTIONS[i]}") }
-      elsif abstract_distance = options.delete(:abstract_distance)
-        years = (self.self.distance / 1.year).floor
+      elsif (abstract_distance = options.delete(:abstract_distance))
+        years = (self.distance / 1.year).floor
         self.distance = self.distance - years.year
 
         months = (self.distance / 1.month).floor
